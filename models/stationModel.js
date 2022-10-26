@@ -1,5 +1,7 @@
 import mongoose from 'mongoose'
 
+
+//Station database schema
 const stationSchema = mongoose.Schema({
 
    

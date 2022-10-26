@@ -2,6 +2,7 @@ import asyncHandler from 'express-async-handler'
 import Station from '../models/stationModel.js'
 
 
+//Add station
 const addStation = asyncHandler(async (req, res) => {
     const {
         stationName,
@@ -20,6 +21,7 @@ const addStation = asyncHandler(async (req, res) => {
   
     })
     try {
+      console.log("run")
       await newStation.save()
       res.send('New Station Added Successfully')
     } catch (error) {
