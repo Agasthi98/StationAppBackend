@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import colors from 'colors'
 import connectDB from './config/db.js'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 
 //configure dotenv file
 dotenv.config()
@@ -15,6 +16,7 @@ const app = express()
 
 app.use(express.json())
 app.use(bodyParser.json())
+app.use(cors())
 app.use(bodyParser.urlencoded({
   extended:true
 }))
@@ -25,8 +27,11 @@ app.get('/', (req, res) => {
 })
 
 //use imported routes
-import StationRoutes from './routes/stationRoutes.js'
-app.use('/api/station', StationRoutes);
+import PatrolRoutes from './routes/patrolRoutes.js'
+import DieselRoutes from './routes/dieselRoutes.js'
+
+app.use('/api/petrol', PatrolRoutes);
+app.use('/api/diesel', DieselRoutes);
 
 
 //PORT configure backend
