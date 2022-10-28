@@ -30,41 +30,6 @@ const addDiesel =  (req, res) => {
     }
   }
 
-
-  //  //Update petrol
-  //  const updateDiesel =  (req, res) => {
-
-  //   const {
-  //     liters,
-  //     arrival,
-  //     departure,
-  //     queue,
-  //     StationNumber,
-  //     StationName,
-  //     StationLocation
-  //   } = req.body
-  
-  //   const diesel =  Diesel.findById(req.params.id)
-  
-  //   if (diesel) {
-  //     diesel.liters = liters,
-  //     diesel.arrival = arrival,
-  //     diesel.departure = departure,
-  //     diesel.queue = queue,
-  //     diesel.StationName = StationName,
-  //     diesel.StationLocation = StationLocation,
-  //     diesel.StationNumber = StationNumber
-  
-  //     const updateDiesel =  diesel.save()
-  //     res.json(updateDiesel)
-  
-  //   } else {
-  //     res.status(404)
-  //     throw new Error("Diesel Not Found")
-  //   }
-  
-  // }
-
   
   const getDieselDetails = (req, res)=>{
     var StationNumber =req.body.StationNumber;

@@ -32,40 +32,6 @@ const addPetrol =  (req, res) => {
     }
   }
 
-  // //Update petrol
-  // const updatePetrol =  (req, res) => {
-
-  //   const {
-  //     liters,
-  //     arrival,
-  //     departure,
-  //     queue,
-  //     StationNumber,
-  //     StationName,
-  //     StationLocation
-  //   } = req.body
-  
-  //   const patrol =  Patrol.findById(req.params.id)
-  
-  //   if (patrol) {
-  //     patrol.liters = liters,
-  //     patrol.arrival = arrival,
-  //     patrol.departure = departure,
-  //     patrol.queue = queue,
-  //     patrol.StationName = StationName,
-  //     patrol.StationLocation = StationLocation,
-  //     patrol.StationNumber = StationNumber
-  
-  //     const updatePetrol =  patrol.save()
-  //     res.json(updatePetrol)
-  
-  //   } else {
-  //     res.status(404)
-  //     throw new Error("Petrol Not Found")
-  //   }
-  
-  // }
-
 
    //Get data from the frontend
 
