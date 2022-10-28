@@ -29,9 +29,11 @@ app.get('/', (req, res) => {
 //use imported routes
 import PatrolRoutes from './routes/patrolRoutes.js'
 import DieselRoutes from './routes/dieselRoutes.js'
+import TimeRoutes from './routes/timeRoutes.js'
 
 app.use('/api/petrol', PatrolRoutes);
 app.use('/api/diesel', DieselRoutes);
+app.use('/api/time', TimeRoutes)
 
 
 //PORT configure backend
