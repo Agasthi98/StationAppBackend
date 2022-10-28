@@ -8,8 +8,8 @@ const addDiesel =  (req, res) => {
   var arrivalTime =req.body.arrivalTime;
   var endTime =req.body.endTime;
   var queueLength =req.body.queueLength;
-  var stationNumber =req.body.StationNumber;
-  var stationName =req.body.StationName;
+  var stationName =req.body.stationName;
+  var stationNumber =req.body.stationNumber;
   var stationLocation =req.body.stationLocation;
     
     const newDiesel = new Diesel({
@@ -17,8 +17,8 @@ const addDiesel =  (req, res) => {
       arrivalTime,
       endTime,
       queueLength, 
-      stationNumber,
       stationName,
+      stationNumber,
       stationLocation
     })
     try {
@@ -65,4 +65,30 @@ const addDiesel =  (req, res) => {
   
   // }
 
-  export{addDiesel}
+  
+  const getDieselDetails = (req, res)=>{
+    var StationNumber =req.body.StationNumber;
+    console.log(StationNumber)
+    Diesel.find({stationNumber: StationNumber})
+    .then((data) => {
+      console.log(data[0])
+      //console.log("PETROL DETAILS"+data[0].liters+data.arrivalTime[0]+data.endTime[0]+data.queueLength[0]+data.stationNumber[0]+data.stationName+data.stationLocation[0]);
+      res.json({
+        liters:data[0].liters,
+        arrivalTime:data[0].arrivalTime,
+        endTime:data[0].endTime,
+        queueLength:data[0].queueLength,
+        stationNumber:data[0].stationNumber,
+        stationName:data[0].stationName,
+        stationLocation:data[0].stationLocation
+      })
+    }).catch((err) => {
+      console.log("GET DIESEL FAILED"+err);
+      res.json({
+          code:400 ,
+          body: "Fail" 
+      })
+    });
+}
+
+  export{addDiesel,getDieselDetails}
