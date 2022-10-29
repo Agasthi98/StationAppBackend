@@ -50,10 +50,45 @@ const addDiesel =  (req, res) => {
     }).catch((err) => {
       console.log("GET DIESEL FAILED"+err);
       res.json({
-          code:400 ,
-          body: "Fail" 
+          code:200 ,
+          body: "Unavailable",
+          message: 'Unavailable'
       })
     });
 }
 
-  export{addDiesel,getDieselDetails}
+const removeDiesel = (req,res)=> {
+  console.log("LOG::DIESEL:: REMOVE START TO WORK");
+
+  //Get data from the frontend
+  var StationNumber =req.body.StationNumber;
+
+ //Find the Station key
+  Diesel.find({stationNumber: StationNumber})
+    .then((data) => {
+      console.log("LOG::DIESEL:: FIND KEY SUCCESS");
+      const _id = data[0]._id;
+
+
+//find and delete the database record
+Diesel
+  .findByIdAndDelete(_id)
+  .then(() => {
+    console.log("LOG::DIESEL:: FIND AND DELETE SUCCESS");
+    res.json({
+      code:200 ,
+      body: "Success" 
+  })
+
+  }).catch((err) => {
+    console.log("LOG::PETROL:: FAIL"+err);
+    res.json({
+      code:400 ,
+      body: "Fail" 
+
+      })
+    })
+ })
+}
+
+  export{addDiesel,getDieselDetails,removeDiesel}

@@ -1,5 +1,5 @@
 import Petrol from '../models/patrolModel.js'
-
+import asyncHandler from 'express-async-handler';
 
 //Add station
 const addPetrol =  (req, res) => {
@@ -54,11 +54,59 @@ const addPetrol =  (req, res) => {
     }).catch((err) => {
       console.log("GET PETROL FAILED"+err);
       res.json({
-          code:400 ,
-          body: "Fail" 
+          code:200 ,
+          body: "Unavailable",
+          message: 'Unavailable'
       })
     });
 }
+
+const removePetrol = (req,res)=> {
+  console.log("LOG::PETROL:: REMOVE START TO WORK");
+
+  //Get data from the frontend
+  var StationNumber =req.body.StationNumber;
+
+ //Find the Station key
+  Petrol.find({stationNumber: StationNumber})
+    .then((data) => {
+      console.log("LOG::PETROL:: FIND KEY SUCCESS");
+      const _id = data[0]._id;
+
+
+//find and delete the database record
+Petrol
+  .findByIdAndDelete(_id)
+  .then(() => {
+    console.log("LOG::PETROL:: FIND AND DELETE SUCCESS");
+    res.json({
+      code:200 ,
+      body: "Success" 
+  })
+
+
+  }).catch((err) => {
+    console.log("LOG::PETROL:: FAIL"+err);
+    res.json({
+      code:400 ,
+      body: "Fail" 
+
+      })
+    })
+ })
+}
+const searchStation = asyncHandler(async(req,res) => {
+
+  const findlocation = req.params.location;
+  const petrol = await Petrol.find({shedLocation:findlocation})
+
+  if(petrol){
+      res.json(petrol)
+  }else{
+      res.status(404)
+      throw new Error("Station Not found")
+  }
+})
   
 
-  export{addPetrol,getPetrolDetails} 
+  export{addPetrol,getPetrolDetails,removePetrol, searchStation} 
