@@ -68,7 +68,7 @@ const removePetrol = (req,res)=> {
   var StationNumber =req.body.StationNumber;
 
  //Find the Station key
-  Petrol.find({stationNumber: StationNumber})
+ Petrol.find({stationNumber: StationNumber})
     .then((data) => {
       console.log("LOG::PETROL:: FIND KEY SUCCESS");
       const _id = data[0]._id;
@@ -83,7 +83,6 @@ Petrol
       code:200 ,
       body: "Success" 
   })
-
 
   }).catch((err) => {
     console.log("LOG::PETROL:: FAIL"+err);

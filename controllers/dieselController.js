@@ -81,7 +81,7 @@ Diesel
   })
 
   }).catch((err) => {
-    console.log("LOG::PETROL:: FAIL"+err);
+    console.log("LOG::DIESEL:: FAIL"+err);
     res.json({
       code:400 ,
       body: "Fail" 
@@ -90,5 +90,7 @@ Diesel
     })
  })
 }
+
+
 
   export{addDiesel,getDieselDetails,removeDiesel}
