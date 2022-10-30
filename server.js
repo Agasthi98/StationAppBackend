@@ -30,11 +30,12 @@ app.get('/', (req, res) => {
 import PatrolRoutes from './routes/patrolRoutes.js'
 import DieselRoutes from './routes/dieselRoutes.js'
 import TimeRoutes from './routes/timeRoutes.js'
-
+import QueueRoutes from './routes/queueRotes.js'
 
 app.use('/api/petrol', PatrolRoutes);
 app.use('/api/diesel', DieselRoutes);
 app.use('/api/time', TimeRoutes)
+app.use('/api/queue', QueueRoutes)
 
 
 

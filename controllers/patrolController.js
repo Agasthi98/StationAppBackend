@@ -108,4 +108,32 @@ const searchStation = asyncHandler(async(req,res) => {
 })
   
 
-  export{addPetrol,getPetrolDetails,removePetrol, searchStation} 
+
+
+const getShedPetrol = (req, res)=>{
+  var StationNumber =req.body.StationNumber;
+  console.log(StationNumber)
+  Petrol.find({stationNumber: StationNumber})
+  .then((data) => {
+    //console.log(data[0])
+    // //console.log("PETROL DETAILS"+data[0].liters+data.arrivalTime[0]+data.endTime[0]+data.queueLength[0]+data.stationNumber[0]+data.stationName+data.stationLocation[0]);
+    res.json({
+      liters:data[0].liters,
+      arrivalTime:data[0].arrivalTime,
+      endTime:data[0].endTime,
+      queueLength:data[0].queueLength,
+      stationNumber:data[0].stationNumber,
+      stationName:data[0].stationName,
+      stationLocation:data[0].stationLocation
+    })
+  }).catch((err) => {
+    console.log("GET PETROL FAILED"+err);
+    res.json({
+        code:200 ,
+        body: "Unavailable",
+        message: 'Unavailable'
+    })
+  });
+}
+
+  export{addPetrol,getPetrolDetails,removePetrol, searchStation,getShedPetrol} 
