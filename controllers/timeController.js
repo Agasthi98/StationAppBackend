@@ -48,4 +48,41 @@ const addTime =  (req, res) => {
           })
         });
     }
-    export{addTime,getShedOpenTimeDetails}
+
+
+    
+const removeTime = (req,res)=> {
+  console.log("LOG::TIME:: REMOVE TIME");
+
+  //Get data from the frontend
+  var StationNumber =req.body.StationNumber;
+
+ //Find the Station key
+  TimeModel.find({stationNumber: StationNumber})
+    .then((data) => {
+      console.log("LOG::TIME:: FIND KEY SUCCESS");
+      const _id = data[0]._id;
+
+
+//find and delete the database record
+TimeModel
+  .findByIdAndDelete(_id)
+  .then(() => {
+    console.log("LOG::TIME:: FIND AND DELETE SUCCESS");
+    res.json({
+      code:200 ,
+      body: "Success" 
+  })
+
+  }).catch((err) => {
+    console.log("LOG::TIME:: FAIL"+err);
+    res.json({
+      code:400 ,
+      body: "Fail" 
+
+      })
+    })
+ })
+}
+
+    export{addTime,getShedOpenTimeDetails,removeTime}
