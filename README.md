@@ -2,6 +2,7 @@
 
 <li>Android Application</li>
 <li>Javascript (Nodejs) based</li>
+<li>Mongo DB</li>
 <li>REST API</li>
 <li>App Contains</li>
 
