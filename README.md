@@ -1,7 +1,7 @@
 # StationAppBackend
 
 <li>Android Application</li>
-<li>Java based</li>
+<li>Javascript (Nodejs) based</li>
 <li>REST API</li>
 <li>App Contains</li>
 
